@@ -12,19 +12,19 @@ Pace is a fitness app designed to help users track workouts, monitor progress, a
 
 ## 1. Project Initialization
 
-- [ ] **Set Up Version Control**
-  - [ ] Initialize a Git repository to manage the codebase and track changes effectively.
-  - [ ] Create a `.gitignore` file to exclude unnecessary files from version control.
+- [X] **Set Up Version Control**
+  - [X] Initialize a Git repository to manage the codebase and track changes effectively.
+  - [X] Create a `.gitignore` file to exclude unnecessary files from version control.
 
-- [ ] **Initialize the React Native Project with Expo**
-  - [ ] Install Expo CLI globally.
-  - [ ] Create a new Expo project named `fitness-tracker-app`.
-  - [ ] Navigate to the project directory.
+- [X] **Initialize the React Native Project with Expo**
+  - [X] Install Expo CLI globally.
+  - [X] Create a new Expo project named `fitness-tracker-app`.
+  - [X] Navigate to the project directory.
 
-- [ ] **Initialize the Golang Backend**
-  - [ ] Install Golang on your development machine.
-  - [ ] Set up the project structure for the backend.
-  - [ ] Initialize a new Go module for dependency management.
+- [X] **Initialize the Golang Backend**
+  - [X] Install Golang on your development machine.
+  - [X] Set up the project structure for the backend.
+  - [X] Initialize a new Go module for dependency management.
 
 ## 2. User Interface (UI) Design
 
