@@ -1,74 +1,95 @@
-import { Image, StyleSheet, Platform } from 'react-native';
+import React, { useState, useEffect } from 'react';
+import { View, Text, StyleSheet, ScrollView, TouchableOpacity, Image } from 'react-native';
+import { SafeAreaView } from 'react-native-safe-area-context';
+import { useRouter } from 'expo-router';
+import { StatusBar } from 'expo-status-bar';
 
-import { HelloWave } from '@/components/HelloWave';
-import ParallaxScrollView from '@/components/ParallaxScrollView';
-import { ThemedText } from '@/components/ThemedText';
-import { ThemedView } from '@/components/ThemedView';
+export default function Home() {
+	const router = useRouter();
 
-export default function HomeScreen() {
-  return (
-    <ParallaxScrollView
-      headerBackgroundColor={{ light: '#A1CEDC', dark: '#1D3D47' }}
-      headerImage={
-        <Image
-          source={require('@/assets/images/partial-react-logo.png')}
-          style={styles.reactLogo}
-        />
-      }>
-      <ThemedView style={styles.titleContainer}>
-        <ThemedText type="title">Welcome!</ThemedText>
-        <HelloWave />
-      </ThemedView>
-      <ThemedView style={styles.stepContainer}>
-        <ThemedText type="subtitle">Step 1: Try it</ThemedText>
-        <ThemedText>
-          Edit <ThemedText type="defaultSemiBold">app/(tabs)/index.tsx</ThemedText> to see changes.
-          Press{' '}
-          <ThemedText type="defaultSemiBold">
-            {Platform.select({
-              ios: 'cmd + d',
-              android: 'cmd + m',
-              web: 'F12'
-            })}
-          </ThemedText>{' '}
-          to open developer tools.
-        </ThemedText>
-      </ThemedView>
-      <ThemedView style={styles.stepContainer}>
-        <ThemedText type="subtitle">Step 2: Explore</ThemedText>
-        <ThemedText>
-          Tap the Explore tab to learn more about what's included in this starter app.
-        </ThemedText>
-      </ThemedView>
-      <ThemedView style={styles.stepContainer}>
-        <ThemedText type="subtitle">Step 3: Get a fresh start</ThemedText>
-        <ThemedText>
-          When you're ready, run{' '}
-          <ThemedText type="defaultSemiBold">npm run reset-project</ThemedText> to get a fresh{' '}
-          <ThemedText type="defaultSemiBold">app</ThemedText> directory. This will move the current{' '}
-          <ThemedText type="defaultSemiBold">app</ThemedText> to{' '}
-          <ThemedText type="defaultSemiBold">app-example</ThemedText>.
-        </ThemedText>
-      </ThemedView>
-    </ParallaxScrollView>
-  );
+	return (
+		<SafeAreaView style={styles.container}>
+			<StatusBar style='auto' />
+			<ScrollView style={styles.scrollView}>
+				<View style={styles.header}>
+					<Text style={styles.title}>Welcome to Pace</Text>
+					<Text style={styles.subtitle}>Your fitness journey starts here</Text>
+				</View>
+
+				<View style={styles.cardContainer}>
+					<TouchableOpacity
+						style={styles.card}
+						onPress={() => router.push('/workouts')}
+					>
+						<Text style={styles.cardTitle}>Workouts</Text>
+						<Text style={styles.cardDescription}>Browse and start workouts</Text>
+					</TouchableOpacity>
+
+					<TouchableOpacity
+						style={styles.card}
+						onPress={() => router.push('/progress')}
+					>
+						<Text style={styles.cardTitle}>Progress</Text>
+						<Text style={styles.cardDescription}>Track your fitness journey</Text>
+					</TouchableOpacity>
+
+					<TouchableOpacity
+						style={styles.card}
+						onPress={() => router.push('/profile')}
+					>
+						<Text style={styles.cardTitle}>Profile</Text>
+						<Text style={styles.cardDescription}>View and edit your profile</Text>
+					</TouchableOpacity>
+				</View>
+			</ScrollView>
+		</SafeAreaView>
+	);
 }
 
 const styles = StyleSheet.create({
-  titleContainer: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    gap: 8,
-  },
-  stepContainer: {
-    gap: 8,
-    marginBottom: 8,
-  },
-  reactLogo: {
-    height: 178,
-    width: 290,
-    bottom: 0,
-    left: 0,
-    position: 'absolute',
-  },
+	container: {
+		flex: 1,
+		backgroundColor: '#f5f5f5',
+	},
+	scrollView: {
+		flex: 1,
+	},
+	header: {
+		padding: 20,
+		marginTop: 10,
+	},
+	title: {
+		fontSize: 28,
+		fontWeight: 'bold',
+		color: '#333',
+	},
+	subtitle: {
+		fontSize: 16,
+		color: '#666',
+		marginTop: 5,
+	},
+	cardContainer: {
+		padding: 15,
+	},
+	card: {
+		backgroundColor: '#fff',
+		borderRadius: 10,
+		padding: 20,
+		marginBottom: 15,
+		shadowColor: '#000',
+		shadowOffset: { width: 0, height: 2 },
+		shadowOpacity: 0.1,
+		shadowRadius: 4,
+		elevation: 3,
+	},
+	cardTitle: {
+		fontSize: 18,
+		fontWeight: 'bold',
+		marginBottom: 5,
+		color: '#333',
+	},
+	cardDescription: {
+		fontSize: 14,
+		color: '#666',
+	},
 });
