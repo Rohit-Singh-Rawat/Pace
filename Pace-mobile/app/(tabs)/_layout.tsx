@@ -58,6 +58,11 @@ export default function TabLayout() {
 						flexDirection: 'column',
 						alignItems: 'center',
 						justifyContent: 'center',
+						backgroundColor: Colors[theme].background,
+						borderColor: 'rgba(128, 128, 128, 0.7)',
+					},
+					default: {
+						backgroundColor: Colors[theme].background,
 					},
 				}),
 			}}

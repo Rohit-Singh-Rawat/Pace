@@ -1,95 +1,81 @@
-import React, { useState, useEffect } from 'react';
-import { View, Text, StyleSheet, ScrollView, TouchableOpacity, Image } from 'react-native';
+import React, { useState } from 'react';
+import { View, Text, ScrollView, TouchableOpacity } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { useRouter } from 'expo-router';
 import { StatusBar } from 'expo-status-bar';
+import { Ionicons } from '@expo/vector-icons';
+import { GestureHandlerRootView } from 'react-native-gesture-handler';
+import { BottomSheetModalProvider } from '@gorhom/bottom-sheet';
+import { cn } from '../../lib/utils';
+import { generateTwoWeeks, getCurrentDayIndex } from '../../utils/dates';
+import { DaySelector } from '../../components/training/DaySelector';
+import { EmptyWorkout } from '../../components/training/EmptyWorkout';
+import { Button } from '../../components/ui/Button';
+import { ActivitySummary, ActivityType } from '../../components/training/ActivitySummary';
+import { StartWorkoutModal } from '../../components/training/StartWorkoutModal';
+import { ExerciseCard } from '../../components/training/excerciseCard';
+import '../../global.css';
+import { Training } from '@/components/training/Training';
 
 export default function Home() {
 	const router = useRouter();
+	const days = generateTwoWeeks();
+	const [selectedDay, setSelectedDay] = useState(getCurrentDayIndex(days));
+	const [activityType, setActivityType] = useState<ActivityType>('workout');
+
+	const handleDaySelect = (index: number) => {
+		setSelectedDay(index);
+	};
+
+	const handleActivityTypeChange = (type: ActivityType) => {
+		setActivityType(type);
+	};
+
+	// Sample workout data with multiple exercises
+	const sampleWorkoutData = {
+		exercises: [
+		
+		]
+	};
 
 	return (
-		<SafeAreaView style={styles.container}>
-			<StatusBar style='auto' />
-			<ScrollView style={styles.scrollView}>
-				<View style={styles.header}>
-					<Text style={styles.title}>Welcome to Pace</Text>
-					<Text style={styles.subtitle}>Your fitness journey starts here</Text>
-				</View>
+		<GestureHandlerRootView style={{ flex: 1 }}>
+			<BottomSheetModalProvider>
+				<SafeAreaView className={cn('flex-1 bg-black')}>
+					<StatusBar style='light' />
+					<ScrollView className={cn('flex-1')}>
+						<View className={cn('p-5 space-y-5')}>
+							{/* Header */}
+							<View className={cn('flex-row justify-between items-center')}>
+								<Text className={cn('text-white text-2xl font-bold')}>TRAINING</Text>
+								<TouchableOpacity className={cn('rounded-full bg-gray-800 p-2')}>
+									<Ionicons
+										name='refresh'
+										size={24}
+										color='#D4FB54'
+									/>
+								</TouchableOpacity>
+							</View>
 
-				<View style={styles.cardContainer}>
-					<TouchableOpacity
-						style={styles.card}
-						onPress={() => router.push('/workouts')}
-					>
-						<Text style={styles.cardTitle}>Workouts</Text>
-						<Text style={styles.cardDescription}>Browse and start workouts</Text>
-					</TouchableOpacity>
+							{/* Calendar Days - Scrollable */}
+							<View className={cn('mt-4')}>
+								<DaySelector
+									days={days}
+									selectedDay={selectedDay}
+									onSelectDay={handleDaySelect}
+								/>
+							</View>
 
-					<TouchableOpacity
-						style={styles.card}
-						onPress={() => router.push('/progress')}
-					>
-						<Text style={styles.cardTitle}>Progress</Text>
-						<Text style={styles.cardDescription}>Track your fitness journey</Text>
-					</TouchableOpacity>
-
-					<TouchableOpacity
-						style={styles.card}
-						onPress={() => router.push('/profile')}
-					>
-						<Text style={styles.cardTitle}>Profile</Text>
-						<Text style={styles.cardDescription}>View and edit your profile</Text>
-					</TouchableOpacity>
-				</View>
-			</ScrollView>
-		</SafeAreaView>
+							{/* Activity Summary Component */}
+							<ActivitySummary
+								initialActivityType={activityType}
+								onActivityTypeChange={handleActivityTypeChange}
+							/>
+							<Training workoutData={sampleWorkoutData} />
+						</View>
+					</ScrollView>
+				</SafeAreaView>
+			</BottomSheetModalProvider>
+		</GestureHandlerRootView>
 	);
 }
-
-const styles = StyleSheet.create({
-	container: {
-		flex: 1,
-		backgroundColor: '#f5f5f5',
-	},
-	scrollView: {
-		flex: 1,
-	},
-	header: {
-		padding: 20,
-		marginTop: 10,
-	},
-	title: {
-		fontSize: 28,
-		fontWeight: 'bold',
-		color: '#333',
-	},
-	subtitle: {
-		fontSize: 16,
-		color: '#666',
-		marginTop: 5,
-	},
-	cardContainer: {
-		padding: 15,
-	},
-	card: {
-		backgroundColor: '#fff',
-		borderRadius: 10,
-		padding: 20,
-		marginBottom: 15,
-		shadowColor: '#000',
-		shadowOffset: { width: 0, height: 2 },
-		shadowOpacity: 0.1,
-		shadowRadius: 4,
-		elevation: 3,
-	},
-	cardTitle: {
-		fontSize: 18,
-		fontWeight: 'bold',
-		marginBottom: 5,
-		color: '#333',
-	},
-	cardDescription: {
-		fontSize: 14,
-		color: '#666',
-	},
-});

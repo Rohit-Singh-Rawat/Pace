@@ -5,7 +5,7 @@ import WorkoutIcon from './workouts';
 import ProgressIcon from './progress';
 import RoutinesIcon from './routines';
 import ExercisesIcon from './exercises';
-
+import CardioIcon from './cardio';
 export {
 	HomeIcon,
 	ProfileIcon,
@@ -13,4 +13,5 @@ export {
 	ProgressIcon,
 	RoutinesIcon,
 	ExercisesIcon,
+	CardioIcon,
 };

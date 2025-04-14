@@ -1,28 +1,35 @@
 /**
- * Below are the colors that are used in the app. The colors are defined for both light and dark mode.
+ * Below are the colors that are used in the app. The app uses a single dark theme.
  * There are many other ways to style your app. For example, [Nativewind](https://www.nativewind.dev/), [Tamagui](https://tamagui.dev/), [unistyles](https://reactnativeunistyles.vercel.app), etc.
  */
 
-const tintColorLight = '#FFCC00'; // Yellow color for focused items
-const tintColorDark = '#FFCC00'; // Same yellow for dark mode
-const unfocusedColorLight = '#FFFFFF'; // White for unfocused items
-const unfocusedColorDark = '#FFFFFF'; // White for unfocused items in dark mode
+const tintColor = '#D4FB54'; // Yellow color for focused items
+const unfocusedColor = '#FFFFFF'; // White for unfocused items
 
 export const Colors = {
+	text: '#FFFFFF',
+	background: '#000000',
+	tint: tintColor,
+	icon: unfocusedColor,
+	tabIconDefault: unfocusedColor,
+	border: '#1F1F1F',
+	tabIconSelected: tintColor,
+
+	// Keeping these for backward compatibility with existing code
 	light: {
-		text: '#000000',
-		background: '#FFFFFF',
-		tint: tintColorLight,
-		icon: unfocusedColorLight,
-		tabIconDefault: unfocusedColorLight,
-		tabIconSelected: tintColorLight,
+		text: '#FFFFFF',
+		background: '#000000',
+		tint: tintColor,
+		icon: unfocusedColor,
+		tabIconDefault: unfocusedColor,
+		tabIconSelected: tintColor,
 	},
 	dark: {
 		text: '#FFFFFF',
 		background: '#000000',
-		tint: tintColorDark,
-		icon: unfocusedColorDark,
-		tabIconDefault: unfocusedColorDark,
-		tabIconSelected: tintColorDark,
+		tint: tintColor,
+		icon: unfocusedColor,
+		tabIconDefault: unfocusedColor,
+		tabIconSelected: tintColor,
 	},
 };
