@@ -1,14 +1,17 @@
 # Pace
-Pace is a fitness app designed to help users track workouts, monitor progress, and achieve health goals.
+Pace is a fitness app designed to help users track workouts, monitor progress, and achieve health goals. 
 # Fitness Tracking Application Master Plan
 
 ## Table of Contents
-1. [Project Initialization](#1-project-initialization)
-2. [User Interface (UI) Design](#2-user-interface-ui-design)
-3. [Frontend Development with React Native and Expo](#3-frontend-development-with-react-native-and-expo)
-4. [Backend Development with Golang](#4-backend-development-with-golang)
-5. [Integration and Testing](#5-integration-and-testing)
-6. [Deployment and Maintenance](#6-deployment-and-maintenance)
+- [Pace](#pace)
+- [Fitness Tracking Application Master Plan](#fitness-tracking-application-master-plan)
+  - [Table of Contents](#table-of-contents)
+  - [1. Project Initialization](#1-project-initialization)
+  - [2. User Interface (UI) Design](#2-user-interface-ui-design)
+  - [3. Frontend Development with React Native and Expo](#3-frontend-development-with-react-native-and-expo)
+  - [4. Backend Development with Golang](#4-backend-development-with-golang)
+  - [5. Integration and Testing](#5-integration-and-testing)
+  - [6. Deployment and Maintenance](#6-deployment-and-maintenance)
 
 ## 1. Project Initialization
 
