@@ -31,8 +31,8 @@ Pace is a fitness app designed to help users track workouts, monitor progress, a
 
 ## 2. User Interface (UI) Design
 
-- [ ] **Create Wireframes or Mockups**
-  - [ ] Design visual representations of the app's layout and user flow.
+- [X] **Create Wireframes or Mockups**
+  - [X] Design visual representations of the app's layout and user flow.
 
 - [ ] **Focus on Intuitive Navigation and Clean Design**
   - [ ] Ensure the app has a user-friendly interface with straightforward navigation paths.
